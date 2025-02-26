@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"strings"
+)
 
-func main() {
-    fmt.Println("Hello, World!")	
+func cleanInput(s string) []string {
+	return strings.Fields(s)
 }
