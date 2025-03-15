@@ -52,3 +52,15 @@ func (p *Pocket) GetPokemon(key string) (PokemonInfo, bool) {
 	pokemon, exists := p.Pocket[key]
 	return pokemon, exists
 }
+
+func (p *Pocket) GetPokemons() []string {
+	p.mx.Lock()
+	defer p.mx.Unlock()
+	keys := make([]string, len(p.Pocket))
+	i := 0
+	for k := range p.Pocket {
+		keys[i] = k
+		i++
+	}
+	return keys
+}
